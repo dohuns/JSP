@@ -16,7 +16,7 @@
 	 </div>
 	<div style="text-align:center">
 		<ul class="nav nav-tabs">
-		  <li role="presentation"><a href="/jsp-report/report-member/memberList.jsp">회원 정보</a></li>
+		  <li role="presentation"><a href="/jsp-report/report-member/memberInfo.jsp">회원 정보</a></li>
 		  <%if(session.getAttribute("sessionId") == null) { %>
 		  	<li role="presentation"><a href="/jsp-report/report-member/index.jsp">로그인</a></li>
 		  <%} else { %>

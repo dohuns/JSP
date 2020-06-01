@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/bootstrap.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -13,7 +13,7 @@
 	
 	function chkId() {
 		if($("#id").val() == "" ) {
-			$("#lb1").text("ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”!");
+			$("#lb1").text("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä!");
 			$("#lb1").css({
 				"color":"red"
 			});
@@ -24,7 +24,7 @@
 	
 	function chkPw() {
 		if($("#pw").val() == "" ) {
-			$("#lb2").text("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”!");
+			$("#lb2").text("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä!");
 			$("#lb2").css({
 				"color":"red"
 			});
@@ -35,18 +35,18 @@
 	
 	function chkRe() {
 		if($("#rePwd").val() == "" ) {
-			$("#lb3").text("ë¹„ë°€ë²ˆí˜¸ í™•ì¸ì„ ì…ë ¥í•´ì£¼ì„¸ìš”!");
+			$("#lb3").text("ºñ¹Ğ¹øÈ£ È®ÀÎÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä!");
 			$("#lb3").css({
 				"color":"red"
 			});
 		} else {
 			if($("#pw").val() == $("#rePwd").val() ) {
-				$("#lb3").text("ì¼ì¹˜~");
+				$("#lb3").text("ÀÏÄ¡~");
 				$("#lb3").css({
 					"color":"blue"
 				});
 			} else {
-				$("#lb3").text("ë¶ˆì¼ì¹˜~");
+				$("#lb3").text("ºÒÀÏÄ¡~");
 				$("#lb3").css({
 					"color":"red"
 				});
@@ -56,7 +56,7 @@
 	
 	function chkName() {
 		if($("#name").val() == "" ) {
-			$("#lb4").text("ì´ë¦„ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”!");
+			$("#lb4").text("ÀÌ¸§¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä!");
 			$("#lb4").css({
 				"color":"red"
 			});
@@ -67,7 +67,7 @@
 	
 	function chkDep() {
 		if($("#depart").val() == "" ) {
-			$("#lb5").text("ë¶€ì„œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”!");
+			$("#lb5").text("ºÎ¼­¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä!");
 			$("#lb5").css({
 				"color":"red"
 			});
@@ -78,7 +78,7 @@
 	
 	function chkRank() {
 		if($("#rank").val() == "" ) {
-			$("#lb6").text("ì§ê¸‰ì„ ì…ë ¥í•´ì£¼ì„¸ìš”!");
+			$("#lb6").text("Á÷±ŞÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä!");
 			$("#lb6").css({
 				"color":"red"
 			});
@@ -90,9 +90,9 @@
 	function chkReg() {
 		if($("#id").val() == "" || $("#pw").val() == "" || $("#rePwd").val() == "" 
 				|| $("#name").val() == "" || $("#depart").val() == "" || $("#rank").val() == "") {
-			alert("ì…ë ¥ë€ì„ ì „ë¶€ ì…ë ¥í•´ì£¼ì„¸ìš”!!!");
+			alert("ÀÔ·Â¶õÀ» ÀüºÎ ÀÔ·ÂÇØÁÖ¼¼¿ä!!!");
 		} else if($("#pw").val() != $("#rePwd").val()) {
-			alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ì£¼ì„¸ìš”~");
+			alert("ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØÁÖ¼¼¿ä~");
 		} else {
 			$("#fo").submit();
 		}
@@ -104,9 +104,6 @@
 </script>
 </head>
 <body>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-	<%@ taglib	uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-	<fmt:requestEncoding value="UTF-8"/>
 	<jsp:include page="../report-default/header.jsp"/>
 		
 	<br>
@@ -114,16 +111,16 @@
 		<form action="chkRegister.jsp" id="fo" style="margin:0 auto;" class="form-signin">
 			<table>
 				<thead>
-					<th> <h1> íšŒì›ê°€ì… í˜ì´ì§€ </h1> </th>
+					<th> <h1> È¸¿ø°¡ÀÔ ÆäÀÌÁö </h1> </th>
 				</thead>
 				<tbody>
 				
 				<tr>
-					<td> <h3>ì•„ì´ë””</h3> </td>
+					<td> <h3>¾ÆÀÌµğ</h3> </td>
 				</tr>
 				<tr>
 					<td style="width:500px;"> 
-						<input type="text" name="id" id="id" placeholder="ì•„ì´ë””" class="form-control" style="height:50px" onblur="chkId()">
+						<input type="text" name="id" id="id" placeholder="¾ÆÀÌµğ" class="form-control" style="height:50px" onblur="chkId()">
 					</td>  
 				</tr>
 				<tr>
@@ -131,11 +128,11 @@
 				</tr>
 				
 				<tr>
-					<td> <h3>ë¹„ë°€ë²ˆí˜¸</h3> </td>
+					<td> <h3>ºñ¹Ğ¹øÈ£</h3> </td>
 				</tr>
 				<tr>
 					<td> 
-						<input type="text" name="pwd" id="pw" placeholder="ë¹„ë°€ë²ˆí˜¸" class="form-control" style="height:50px" onblur="chkPw()">
+						<input type="text" name="pwd" id="pw" placeholder="ºñ¹Ğ¹øÈ£" class="form-control" style="height:50px" onblur="chkPw()">
 					</td>
 				</tr>
 				<tr>
@@ -143,11 +140,11 @@
 				</tr>
 				
 				<tr>
-					<td> <h3>ë¹„ë°€ë²ˆí˜¸ í™•ì¸</h3> </td>
+					<td> <h3>ºñ¹Ğ¹øÈ£ È®ÀÎ</h3> </td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="rePwd" id="rePwd" placeholder="ë¹„ë°€ë²ˆí˜¸ í™•ì¸" class="form-control" style="height:50px" onblur="chkRe()">
+						<input type="text" name="rePwd" id="rePwd" placeholder="ºñ¹Ğ¹øÈ£ È®ÀÎ" class="form-control" style="height:50px" onblur="chkRe()">
 					</td>
 				</tr>
 				<tr>
@@ -155,11 +152,11 @@
 				</tr>
 				
 				<tr>
-					<td> <h3>ì´ë¦„</h3> </td>
+					<td> <h3>ÀÌ¸§</h3> </td>
 				</tr>
 				<tr>
 					<td> 
-						<input type="text" name="name" id="name" placeholder="ì´ë¦„" class="form-control" style="height:50px" onblur="chkName()">
+						<input type="text" name="name" id="name" placeholder="ÀÌ¸§" class="form-control" style="height:50px" onblur="chkName()">
 					</td>
 				</tr>
 				<tr>
@@ -167,11 +164,11 @@
 				</tr>
 				
 				<tr>
-					<td> <h3>ë¶€ì„œ</h3> </td>
+					<td> <h3>ºÎ¼­</h3> </td>
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="depart" id="depart" placeholder="ë¶€ì„œ" class="form-control" style="height:50px" onblur="chkDep()">
+						<input type="text" name="depart" id="depart" placeholder="ºÎ¼­" class="form-control" style="height:50px" onblur="chkDep()">
 					</td>				
 				</tr>
 				<tr>
@@ -179,11 +176,11 @@
 				</tr>
 				
 				<tr>
-					<td> <h3>ì§ê¸‰</h3> </td>
+					<td> <h3>Á÷±Ş</h3> </td>
 				</tr>
 				<tr>
 					<td> 
-						<input type="text" name="rank" id="rank" placeholder="ì§ê¸‰" class="form-control" style="height:50px" onblur="chkRank()">
+						<input type="text" name="rank" id="rank" placeholder="Á÷±Ş" class="form-control" style="height:50px" onblur="chkRank()">
 					</td>
 				</tr>
 				<tr>
@@ -192,7 +189,7 @@
 				
 				<tr>
 					<td>
-						<br> <button type="button" onclick="chkReg()" class="btn btn-info btn-lg" style="width:100%; height:50px">íšŒì›ê°€ì…</button>
+						<br> <button type="button" onclick="chkReg()" class="btn btn-info btn-lg" style="width:100%; height:50px">È¸¿ø°¡ÀÔ</button>
 					</td>
 				</tr>
 				</tbody>
