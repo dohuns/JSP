@@ -17,7 +17,9 @@
 		
 	
 	<c:set var="flag" value="${dao.boardWrite(vo)}"/>
-	
+	<script>
+		location.href="boardList.jsp?b_category=${param.b_category}"
+	</script>
 		
 
 </body>

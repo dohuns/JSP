@@ -12,11 +12,13 @@
 	<c:set var="check" value="${dao.chkTel(param.u_tel)}"/>
 	<c:choose>
 		<c:when test="${check}">
+			사용 가능~
 			<script>
-				alert("사용 가능~");
+				alert("사용 가능~")
 			</script>
 		</c:when>
 		<c:otherwise>
+			중복 검사를 해주세요
 			<script>
 				alert("사용중인 전화번호 입니다~");
 			</script>

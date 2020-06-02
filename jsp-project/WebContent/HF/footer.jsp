@@ -11,6 +11,7 @@
 </head>
 <body>
 
+	<footer style="bottom:20px; position:fixed; text-align:center; right:0; left:0; ">
 	<hr>
 	<div style="text-align:center">
 		<h3 style="color:pink">
@@ -18,6 +19,7 @@
 			CARE Lab.All rights reserved.
 		</h3>
 	</div>
+	</footer>
 
 </body>
 </html>

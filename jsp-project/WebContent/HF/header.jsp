@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,12 +17,19 @@
 	 </div>
 	<div style="text-align:center">
 		<ul class="nav nav-tabs">
-		  <li role="presentation"><a href="/jsp-report/report-member/memberList.jsp">회원 정보</a></li>
-		  <%if(session.getAttribute("sessionId") == null) { %>
-		  	<li role="presentation"><a href="/jsp-report/report-member/index.jsp">로그인</a></li>
-		  <%} else { %>
-		  	<li role="presentation"><a href="/jsp-report/report-member/logout.jsp">로그아웃</a></li>
-		  <%} %>
+		<c:choose>
+			<c:when test="${sessionScope.sessionId == null}">
+		  		<li role="presentation"><a href="/jsp-project/Manage/login.jsp">로그인</a></li>
+		 	 </c:when>
+		 	 <c:otherwise>
+			  	<li role="presentation"><a href="/jsp-project/Manage/logout.jsp">로그아웃</a></li>
+		 	 </c:otherwise>
+		  </c:choose>
+		  	<li role="presentation"><a href="/jsp-project/board/boardList.jsp?b_category=전체">전체 게시판</a></li>
+		  	<li role="presentation"><a href="/jsp-project/board/boardList.jsp?b_category=자유">자유 게시판</a></li>
+		  	<li role="presentation"><a href="/jsp-project/board/boardList.jsp?b_category=유머">유머 게시판</a></li>
+		  	<li role="presentation"><a href="/jsp-project/board/boardList.jsp?b_category=질문">질문 게시판</a></li>
+		  	<li role="presentation"><a href="/jsp-project/board/boardList.jsp?b_category=팁">팁 게시판</a></li>
 		</ul>
 	</div>
 

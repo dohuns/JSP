@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,8 @@
 	<div class="container">
 		<div class="col-md-6 col-md-offset-3">
 			<div class="panel">
+				<c:choose>
+				<c:when test="${sessionScope.sessionId == null}">
 				<div class="panel-heading">
 					<h1> 로그인 페이지 </h1>
 				</div>
@@ -43,6 +46,13 @@
 						</div>
 					</form>
 				</div>
+				</c:when>
+				<c:otherwise>
+					<div>
+						<h1>이미 로그인 중 입니다~</h1>
+					</div>
+				</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</div>

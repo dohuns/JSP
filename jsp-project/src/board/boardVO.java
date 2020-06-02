@@ -3,7 +3,7 @@ package board;
 public class boardVO {
 	private String b_id;
 	private String b_nick;
-	private String b_num;
+	private int b_num;
 	private String b_title;
 	private int b_readNum;
 	private int b_masterId;
@@ -26,10 +26,10 @@ public class boardVO {
 	public void setB_nick(String b_nick) {
 		this.b_nick = b_nick;
 	}
-	public String getB_num() {
+	public int getB_num() {
 		return b_num;
 	}
-	public void setB_num(String b_num) {
+	public void setB_num(int b_num) {
 		this.b_num = b_num;
 	}
 	public String getB_title() {
@@ -80,6 +80,8 @@ public class boardVO {
 	public void setB_category(String b_category) {
 		this.b_category = b_category;
 	}
+	
+	
 	
 	
 }

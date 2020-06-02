@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix='c' %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,8 @@
 	<jsp:include page="../HF/header.jsp"/>
 		<div class="container">
 			<div class="panel">
+				<c:choose>
+				<c:when test="${sessionScope.sessionId != null}">
 				<div class="panel-heading">
 					<h1> 게시글 작성 페이지 </h1>
 				</div>
@@ -25,10 +28,10 @@
 					</div>
 					<div>
 						<select name="b_category" class="form-control">
-							<option value="free" selected="selected"> 자유게시판 </option>
-							<option value="fun"> 유머게시판 </option>	
-							<option value="ask"> 질문게시판 </option>	
-							<option value="tip"> 팁게시판 </option>	
+							<option value="자유" selected="selected"> 자유게시판 </option>
+							<option value="유머"> 유머게시판 </option>	
+							<option value="질문"> 질문게시판 </option>	
+							<option value="팁"> 팁게시판 </option>	
 						</select>
 					</div>
 					<div>
@@ -49,6 +52,14 @@
 					</div>
 				</div>
 				</form>
+				</c:when>
+				<c:otherwise>
+					<script>
+						alert("로그인 후 이용해주세요!");
+						location.href="../Manage/login.jsp";
+					</script>
+				</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	

@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="../css/bootstrap.css"/>
-<script src=""></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="../js/bootstrap.js"></script>
 <meta charset="UTF-8">
 
 <script>
@@ -18,6 +20,8 @@
 		} else {
 			$("#lb1").text("");
 		}
+		
+	
 	}
 	
 	function chkPw() {
@@ -125,12 +129,17 @@
 			url:"chkId.jsp",
 			data:"u_id="+$("#id").val(),
 			success:function(args) {
-				$("#label").html(args);
+				console.log("success..."+args);
+				$("#label1").html("");
+				$("#label1").html(args);
 			},
 			error:function(e) {
+				console.log("errors...");
 				alert("에러");
 			}
 		});
+		
+		
 	}
 	
 	function telOverlap() {
@@ -139,7 +148,7 @@
 			url:"chkTel.jsp",
 			data:"u_tel="+$("#tel").val(),
 			success:function(args) {
-				$("#label").html(args);
+				$("#label2").html(args);
 			},
 			error:function(e) {
 				alert("에러")
@@ -175,7 +184,7 @@
 					</td>
 					<td>
 						<button type="button" onclick="idOverlap()" class="btn btn-success" style="height:50px">중복체크</button>
-						<label id="label"></label>
+						<label id="label1">중복 검사를 해주세요</label>
 					</td>  
 				</tr>
 				<tr>
@@ -238,6 +247,7 @@
 					</td>
 					<td>
 						<button type="button" onclick="telOverlap()" class="btn btn-success" style="height:50px">중복체크</button>
+						<label id="label2">중복 검사를 해주세요</label>
 					</td>
 				</tr>
 				<tr>

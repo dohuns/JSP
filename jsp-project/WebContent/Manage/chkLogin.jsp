@@ -20,7 +20,7 @@
 					<c:set var="sessionNick" value="${flag.u_nick}" scope="session"/>
 					<script>
 						alert("로그인 성공~");
-						location.href="../board/boardMain.jsp";
+						location.href="/jsp-project/board/boardList.jsp?b_category=전체";
 					</script>
 				</c:when>
 				<c:otherwise>

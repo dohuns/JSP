@@ -14,11 +14,13 @@
 	
 	<c:choose>
 		<c:when test="${check}">
+			사용 가능~
 			<script>
-				alert("사용가능!")
+				alert("사용가능!");
 			</script>
 		</c:when>
 		<c:otherwise>
+			중복 검사를 해주세요
 			<script>
 				alert("중복!!")
 			</script>
