@@ -10,5 +10,5 @@ public interface IboardDAO {
 	
 	public ArrayList<boardVO> selectList(String category);
 	
-	public boardVO showContent(String num);
+	public boardVO showContent(int num);
 }

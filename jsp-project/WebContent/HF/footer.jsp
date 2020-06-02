@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,18 +8,17 @@
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="../js/bootstrap.js"></script>
+
 </head>
 <body>
 
-	<footer style="bottom:20px; position:fixed; text-align:center; right:0; left:0; ">
 	<hr>
-	<div style="text-align:center">
-		<h3 style="color:pink">
-			Copyright &nbsp;&copy;
-			CARE Lab.All rights reserved.
-		</h3>
+	<div class="container">
+		<div style="text-align: center">
+			<h3 style="color: skyblue">Copyright &nbsp;&copy; CARE Lab.All
+				rights reserved.</h3>
+		</div>
 	</div>
-	</footer>
 
 </body>
 </html>

@@ -51,6 +51,11 @@
 						<th style="text-align:center">${vo.b_readNum}</th>
 					</tr>
 				</c:forEach>
+				<tr>
+					<td colspan="5" style="text-align:right;">
+						<button type="button" onclick="location.href='boardWrite.jsp'" class="btn btn-info">글 쓰기</button>
+					</td>
+				</tr>
 			</table>			
 		</div>
 	</div>

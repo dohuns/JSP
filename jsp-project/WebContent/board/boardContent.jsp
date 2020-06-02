@@ -12,11 +12,19 @@
 <style>
 .contentBox{
 	border: 1px solid #eee;
-	width:80%;
+	width:1000px;
 	border-radius : 20px;
 	margin : 29px;
+}
+.lb1 {
+	font-size: 14px;
+	margin-top:10px;
+	margin-bottom:0px;
 	
-	
+}
+.middleBox{
+	border: 1px solid #eee;
+	width:1000px;
 }
 </style>
 </head>
@@ -26,38 +34,41 @@
 	<c:set var="content" value="${dao.showContent(param.b_num)}"/>
 	<div align="center">
 	<div class="contentBox">
-		<div class="container" style="color-border:black">
+		<div class="container" >
 			<!-- 카테고리 -->
-			<div>
-				<h4>${content.b_category}게시판</h4>
+			<div align="left">
+				<a href='boardList.jsp?b_category=${content.b_category}'>
+					<label class="lb1">${content.b_category}게시판</label>
+				</a>
 			</div>
 			<!-- 제목 -->
-			<div style="text-align:center">
-				<h1>${content.b_title}</h1>
+			<div align="left" >
+				<h2 style="margin-top:5px">${content.b_title}</h2>
 			</div>
 			<!-- 닉네임 -->
-			<div>
-				<h4>${content.b_nick}</h4>
+			<div align="left">
+				<h5>${content.b_nick}</h5>
 			</div>
 			<!-- 작성시간 & 조회수 -->
-			<div>
-				<h4>${content.b_date}
+			<div align="left">
+				<h5>${content.b_date}
 					조회수 : ${content.b_readNum}
-				</h4>
+				</h5>
 			</div>
-			<hr>
-			<!-- 게시글 내용 -->
-			<div>
-				${content.b_content}
+			<div align="left">
+				<hr style="width:950px; margin-left: 5px;">
+				<!-- 게시글 내용 -->
+				<div align="left">
+					${content.b_content}
+				</div>
+				<!-- 댓글 수  -->
+				<div align="left" style="margin-top:50px">
+					<span>그림</span> 댓글 + 댓글수(컬럼추가)
+				</div>
+				<hr style="width:950px; margin-left: 5px;">
 			</div>
-			<!-- 댓글 수  -->
-			<div>
-				<span>그림</span> 댓글 + 댓글수(컬럼추가)
-			</div>
-			<hr>
-			<div>
-				<h2>댓글</h2><!-- 시간남으면 댓글 -->
-				
+			<div align="left">
+				<h3>댓글</h3><!-- 시간남으면 댓글 -->
 			</div>
 		</div>
 	</div>

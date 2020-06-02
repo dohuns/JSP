@@ -254,17 +254,6 @@
 					<td><label id="lb6"></label> </td>
 				</tr>
 				<tr>
-					<td> <h3>주소</h3> </td>
-				</tr>
-				<tr>
-					<td> 
-						<input type="text" name="u_addr" id="addr" placeholder="주소" class="form-control" style="height:50px" onblur="chkAddr()">
-					</td>
-				</tr>
-				<tr>
-					<td><label id="lb7"></label> </td>
-				</tr>
-				<tr>
 					<td> <h3>성별</h3> </td>
 				</tr>
 				<tr>
@@ -276,6 +265,18 @@
 				<tr>
 					<td><label></label></td>
 				</tr>
+				<tr>
+					<td> <h3>주소</h3> </td>
+				</tr>
+				<tr>
+					<td> 
+						<input type="text" name="u_addr" id="addr" placeholder="주소" class="form-control" style="height:50px" onblur="chkAddr()">
+					</td>
+				</tr>
+				<tr>
+					<td><label id="lb7"></label> </td>
+				</tr>
+				
 				<tr>
 					<td>
 						<br> <button type="button" onclick="chkReg()" class="btn btn-info btn-lg" style="width:100%; height:50px">회원가입</button>

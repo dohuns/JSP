@@ -28,7 +28,6 @@ public class boardDAO implements IboardDAO {
 	
 	
 	@Override
-//	public boolean boardWrite(String cate, String title, String con, String id, String nick) {
 	public boolean boardWrite(boardVO vo) {
 		String sql = "INSERT INTO boardList values("
 				+ "?,?,num_seq.nextval,?,0,num_seq.currval,0,0,?,sysdate,?)";
@@ -107,14 +106,15 @@ public class boardDAO implements IboardDAO {
 
 
 	@Override
-	public boardVO showContent(String num) {
+	public boardVO showContent(int num) {
+		hitUp(num);
 		boardVO vo = new boardVO();
 		String sql = "SELECT * FROM boardList WHERE b_num=?";
 		
 		try {
 			ps = con.prepareStatement(sql);
 
-			ps.setString(1, num);
+			ps.setInt(1, num);
 			
 			rs = ps.executeQuery();
 			
@@ -130,6 +130,21 @@ public class boardDAO implements IboardDAO {
 			e.printStackTrace();
 		}
 		return vo;
+	}
+	
+	private void hitUp(int num) {
+		String sql = "UPDATE boardList SET b_readNum = b_readNum + 1 WHERE b_num=?";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, num);
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 }
