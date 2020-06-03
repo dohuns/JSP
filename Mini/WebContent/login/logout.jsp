@@ -8,10 +8,11 @@
 <title>logout</title>
 </head>
 <body>
-	<c:remove var="id" scope="session"/>
+	<c:remove var="u_id" scope="session"/>
+	<c:remove var="u_nick" scope="session"/>
 	<script type="text/javascript">
 		alert("로그아웃 되었습니다");
-		location.href = "Login.jsp"
+		location.href = "../default/main.jsp"
 	</script>
 </body>
 </html>
