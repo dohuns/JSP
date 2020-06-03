@@ -44,7 +44,7 @@
 						<h3>내용</h3>
 					</div>
 					<div>
-						<textarea rows="20" cols="100" class="form-control" name="b_content" placeholder="내용 입력"></textarea>
+						<textarea rows="20" cols="100" class="form-control" name="b_content" placeholder="내용 입력" style="resize:none;"></textarea>
 					</div>
 					<div style="float:right">
 						<br>

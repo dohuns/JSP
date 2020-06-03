@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class boardDAO implements IboardDAO {
 	
@@ -106,9 +108,10 @@ public class boardDAO implements IboardDAO {
 
 
 	@Override
-	public boardVO showContent(int num) {
+	public listVO showContent(int num) {
+		listVO vList = new listVO();
 		hitUp(num);
-		boardVO vo = new boardVO();
+		vList.setList(showReply(num));
 		String sql = "SELECT * FROM boardList WHERE b_num=?";
 		
 		try {
@@ -119,19 +122,109 @@ public class boardDAO implements IboardDAO {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
+				boardVO vo = new boardVO();
 				vo.setB_category(rs.getString("b_category"));
 				vo.setB_title(rs.getString("b_title"));
 				vo.setB_nick(rs.getString("b_nick"));
 				vo.setB_date(rs.getString("b_date"));
 				vo.setB_readNum(rs.getInt("b_readNum"));
 				vo.setB_content(rs.getString("b_content"));
+				vList.setVo(vo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return vo;
+		return vList;
 	}
 	
+	@Override
+	public void writeReply(int num, String nick, String content) {
+		String sql = "INSERT INTO replyList values(?,?,?,sysdate,reply_seq.nextval,0)";
+		
+		
+		
+		
+		try {
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, num);
+			ps.setString(2, nick);
+			ps.setString(3, content);
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+		public ArrayList<replyVO> showReply(int num) {
+			ArrayList<replyVO> list = new ArrayList<replyVO>();
+			String sql = "SELECT * FROM replyList WHERE r_num=?";
+			
+			
+			
+			try {
+				ps = con.prepareStatement(sql);
+				
+				ps.setInt(1, num);
+				
+				rs = ps.executeQuery();
+				
+				while(rs.next()) {
+					replyVO vo = new replyVO();
+					vo.setR_nick(rs.getString("r_nick"));
+					vo.setR_content(rs.getString("r_content"));
+					vo.setR_date(rs.getTimestamp("r_date"));
+					vo.setR_masterId(rs.getInt("r_masterId"));
+					vo.setR_replyStep(rs.getInt("r_replyStep"));
+					
+					list.add(vo);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			return list;
+		}
+		
+		@Override
+		public void boardDelete(int num) {
+			String sql = "DELETE FROM boardList WHERE b_num=?";
+			
+			try {
+				ps = con.prepareStatement(sql);
+				
+				ps.setInt(1, num);
+				
+				ps.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		@Override
+		public void boardModify(boardVO vo) {
+			String sql = "UPDATE boardList SET b_title=? , b_content=? WHERE b_num=?";
+			
+			try {
+				ps = con.prepareStatement(sql);
+				
+				ps.setString(1, vo.getB_title());
+				ps.setString(2, vo.getB_content());
+				ps.setInt(3, vo.getB_num());
+				
+				ps.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	
+		
+		
+////////////////////////////////// private /////////////////////////////////
+	// 조회수 증가
 	private void hitUp(int num) {
 		String sql = "UPDATE boardList SET b_readNum = b_readNum + 1 WHERE b_num=?";
 		
@@ -146,5 +239,8 @@ public class boardDAO implements IboardDAO {
 		}
 		
 	}
+
+
+
 	
 }

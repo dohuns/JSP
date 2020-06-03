@@ -35,6 +35,7 @@
 		</div>
 		<div align="center">
 			<table class="table-striped" style="width:80%">
+				<thead style="background-color:#CCFFFF">
 				<tr>
 					<th style="text-align:center; height:50px; width:10%">글 번호</th>
 					<th style="text-align:center; width:55%;">제목</th>
@@ -42,6 +43,8 @@
 					<th style="text-align:center; width:15%;">작성일</th>
 					<th style="text-align:center; width:10%;">조회수</th>
 				</tr>
+				</thead>
+				<tbody>
 				<c:forEach var="vo" items="${list}">
 					<tr>
 						<th style="text-align:center; height:35px;">${vo.b_num}</th>
@@ -56,6 +59,7 @@
 						<button type="button" onclick="location.href='boardWrite.jsp'" class="btn btn-info">글 쓰기</button>
 					</td>
 				</tr>
+				</tbody>
 			</table>			
 		</div>
 	</div>

@@ -10,5 +10,13 @@ public interface IboardDAO {
 	
 	public ArrayList<boardVO> selectList(String category);
 	
-	public boardVO showContent(int num);
+	public listVO showContent(int num);
+	
+	public void writeReply(int num , String nick , String content);
+	
+	public ArrayList<replyVO> showReply(int num);
+	
+	public void boardDelete(int num);
+	
+	public void boardModify(boardVO vo);
 }
