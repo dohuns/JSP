@@ -28,10 +28,10 @@
 					</div>
 					<div>
 						<select name="b_category" class="form-control">
-							<option value="자유" selected="selected"> 자유게시판 </option>
-							<option value="유머"> 유머게시판 </option>	
-							<option value="질문"> 질문게시판 </option>	
-							<option value="팁"> 팁게시판 </option>	
+							<option value="자유" <c:if test="${'자유'== param.b_category || '전체' == param.b_category}"> selected </c:if>>자유게시판 </option>
+							<option value="유머" <c:if test="${'유머'== param.b_category}"> selected </c:if>>유머게시판 </option>	
+							<option value="질문" <c:if test="${'질문' == param.b_category}"> selected </c:if>>질문게시판 </option>	
+							<option value="팁" <c:if test="${'팁' == param.b_category}"> selected </c:if>>팁게시판 </option>	
 						</select>
 					</div>
 					<div>

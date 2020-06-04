@@ -19,4 +19,8 @@ public interface IboardDAO {
 	public void boardDelete(int num);
 	
 	public void boardModify(boardVO vo);
+	
+	public void replyDelete(int masterId);
+	
+	public void replyModify(int masterId , String content);
 }

@@ -56,7 +56,10 @@
 				</c:forEach>
 				<tr>
 					<td colspan="5" style="text-align:right;">
-						<button type="button" onclick="location.href='boardWrite.jsp'" class="btn btn-info">글 쓰기</button>
+						<form action="boardWrite.jsp" method="get">
+							<input type="hidden" value="${param.b_category}" name="b_category">
+							<input type="submit" value="글 쓰기" class="btn btn-info">
+						</form>
 					</td>
 				</tr>
 				</tbody>

@@ -160,9 +160,7 @@ public class boardDAO implements IboardDAO {
 	@Override
 		public ArrayList<replyVO> showReply(int num) {
 			ArrayList<replyVO> list = new ArrayList<replyVO>();
-			String sql = "SELECT * FROM replyList WHERE r_num=?";
-			
-			
+			String sql = "SELECT * FROM replyList WHERE r_num=? ORDER BY r_masterId DESC";
 			
 			try {
 				ps = con.prepareStatement(sql);
@@ -220,6 +218,41 @@ public class boardDAO implements IboardDAO {
 			}
 		}
 		
+
+		@Override
+		public void replyDelete(int masterId) {
+			String sql = "DELETE FROM replyList WHERE r_masterId=?";
+			try {
+				ps = con.prepareStatement(sql);
+				
+				ps.setInt(1, masterId);
+				
+				ps.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		@Override
+		public void replyModify(int masterId, String content) {
+			String sql = "UPDATE replyList SET r_content=? WHERE r_masterId=?";
+			
+			try {
+				ps = con.prepareStatement(sql);
+				
+				ps.setString(1, content);
+				ps.setInt(2, masterId);
+				
+				ps.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			
+			
+		}
+
+		
 	
 		
 		
@@ -239,6 +272,10 @@ public class boardDAO implements IboardDAO {
 		}
 		
 	}
+
+
+
+
 
 
 

@@ -26,11 +26,42 @@
 	border: 1px solid #eee;
 	width:1000px;
 }
+.date {
+	color: #848484;
+	font-family: tahoma;
+	font-size: 8px;
+}
+
+.replyBox{
+	border: 1px solid #eee;
+	width:1000px;
+	border-radius : 20px;
+}	
+.replyBox{
+	border: 1px solid #eee;
+	width:900px;
+	border-radius : 20px;
+}	
+textarea{
+	outline:none;
+}
+
+
+
+
+
 </style>
 <script type="text/javascript">	
-	function addReply() {
+	function addReply(nick) {
+		// 줄 개행을 인식해주는 코드///////////////
+		var str = $('#comment').val();
+
+		str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+
+		$('#comment').val(str);
+		//////////////////////////
 		var datas = "r_num="+${param.b_num} +
-					"&r_nick="+"딱따구리" +
+					"&r_nick="+ nick +
 					"&r_content="+$("#comment").val();
 		console.log(datas);
 		$.ajax({
@@ -38,7 +69,6 @@
 			url:"writeReply.jsp",
 			data:datas,
 			success:function(args) {
-				console.log(args)
 				$("#comment").val("");
 				$("#label1").html(args);
 			},
@@ -48,6 +78,93 @@
 		});
 		
 	}
+	function replyDelete(masterId) {
+		var flag = confirm("정말로 삭제 하시겠습니까?")
+		if(flag) {
+			var datas = "r_num="+${param.b_num} +
+						"&r_masterId="+masterId;
+			
+			$.ajax({
+				type:"POST",
+				url:"deleteReply.jsp",
+				data:datas,
+				success:function(args) {
+					$("#label1").html(args);
+				},
+				error:function(e) {
+					alert("에러!!");
+				}
+			});
+		}
+	}
+	
+	function replyInputModify(masterId) {
+		var datas = "r_num="+${param.b_num} +
+			"&r_masterId="+masterId;
+		
+		$.ajax ({
+			type:"POST",
+			url:"replyInputModify.jsp",
+			data:datas,
+			success:function(args) {
+				$("#label1").html(args);
+			},
+			error:function(e) {
+				alert("에러!!");
+			}
+		});
+	}
+	
+	function replySuccessModify(masterId) {
+		// 줄 개행을 인식해주는 코드///////////////
+		var str = $('#modifyComment').val();
+
+		str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+
+		$('#modifyComment').val(str);
+		//////////////////////////
+		console.log("str : " + str);
+		 
+		var datas = "r_num="+${param.b_num} +
+					"&r_masterId="+masterId +
+					"&r_content="+$("#modifyComment").val();
+		console.log("data" + datas);
+		
+		console.log(datas);
+		$.ajax({
+			type:"POST",
+			url:"replySuccessModify.jsp",
+			data:datas,
+			success:function(args) {
+				$("#label1").html(args);
+			},
+			error:function(e) {
+				alert("에러!!");
+			}
+		});
+	}
+	
+	function replyCancelModify() {
+		var datas = "r_num="+${param.b_num};
+		$.ajax ({
+			type:"POST",
+			url:"replyCancelModify.jsp",
+			data:datas,
+			success:function(args) {
+				$("#label1").html(args);
+			},
+			error:function(e) {
+				alert("에러!!");
+			}
+		});
+	}
+	
+	
+	$("textarea.autosize").on('keydown keyup', function () {
+	  $(this).height(1).height( $(this).prop('scrollHeight')+12 );	
+	});
+	
+	
 	
 </script>
 
@@ -60,7 +177,7 @@
 	<c:set var="arrReply" value="${list.getList()}"/>
 	<div align="center">
 		<div class="contentBox">
-			<div class="container" >
+			<div class="container" style="margin-left:5px;" >
 				<!-- 카테고리 -->
 				<div align="left">
 					<a href='boardList.jsp?b_category=${content.b_category}'>
@@ -100,7 +217,7 @@
 						</div>
 						
 						<c:forEach var="reply" items="${arrReply}">
-							<div class="container">
+							<div class="container" style="width:900px;">
 								<div>
 									<label style="font-size:14px;">${reply.r_nick}</label>
 									<label class="date">${reply.r_date}</label>
@@ -108,24 +225,31 @@
 								<div>
 									<label style="font-size:14px;">${reply.r_content}</label>
 								</div>
+								<c:if test="${sessionScope.sessionNick == reply.r_nick}">
+									<div align="right">
+										<a onclick="replyInputModify(${reply.r_masterId})"> 수정</a> <a onclick="replyDelete(${reply.r_masterId})">삭제</a>
+									</div>
+								</c:if>
 							</div>
 								<hr style="width:900px; margin-left: 5px;">
 						</c:forEach>
 				</label>
 				</div>
 				<div align="left">
-					<table>
-						<tr>
-							<td>
-								<textarea rows="4" cols="100" id="comment" class="form-control" style="width:850px; margin-left: 5px; resize:none;" placeholder="댓글을 입력하세요"></textarea>
-							</td>
-							<td>
-								<div style="margin-left:5px;">
-									<button type="button" onclick="addReply()" class="btn btn-info" style="height:94px;">댓글 작성</button>
-								</div>
-							</td>
-						</tr>					
-					</table>
+					<div class="replyBox">
+						<div>
+							<label style="font-size: 14px; margin:10px 0 5px 10px;">${sessionScope.sessionNick}</label>
+						</div>
+						<div>
+							<div style="width:800px;" >
+								<textarea rows="1" id="comment" style="resize:none; margin:0 0 10px 8px; border:0px; width:890px;overflow-y:hidden;" placeholder="댓글을 입력하세요"></textarea>
+							</div>
+							<div style=" margin:0 10px 10px 0; text-align:right;" >
+								<button type="button" onclick="addReply('${sessionScope.sessionNick}')" class="btn btn-default" style="border:0px;">댓글 작성</button>
+							</div>
+						</div>
+					</div>
+									
 					<br>
 				</div>
 			</div>
@@ -147,6 +271,11 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	$("textarea").on('keydown keyup', function () {
+	  $(this).height(1).height( $(this).prop('scrollHeight')+12 );	
+	});
+	</script>
 	<jsp:include page="../HF/footer.jsp"/>
 	
 </body>
