@@ -7,13 +7,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>writeChk.jsp</title>
+<title>회원 정보 수정</title>
 </head>
 <body>
-	<jsp:useBean id="boardDao" class="board.BoardDAO" />
-	<jsp:useBean id="boardDto" class="board.BoardDTO" />
-	<jsp:setProperty property="*" name="boardDto"/>
-	<c:set var="result" value="${boardDao.write(boardDto)}" />
-	<c:redirect url="list.jsp" />
+	<jsp:useBean id="userDao" class="user.UserDAO" />
+	<jsp:useBean id="userDto" class="user.UserDTO" />
+	<jsp:setProperty property="*" name="userDto"/>
+	${userDao.update(userDto)}
+	<c:redirect url="userPage.jsp?u_id=${param.u_id}" />
 </body>
 </html>

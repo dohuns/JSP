@@ -19,23 +19,13 @@
 <body>
 	<jsp:useBean id="boardDao" class="board.BoardDAO" />
 	<jsp:useBean id="boardDto" class="board.BoardDTO" />
-
-	<!-- PAGING -->
-	<c:choose>
-		<c:when test="${param.start == null}">
-			<c:set var="start" value="1" />
-		</c:when>
-		<c:otherwise>
-			<c:set var="start" value="${param.start}" />
-		</c:otherwise>
-	</c:choose>
-	<c:set var="boardList" value="${boardDao.list(start)}" />
-	<c:set var="totalPage" value="${boardDao.getTotalPage()}" />
-	<!--  -->
+	<c:set var="sBoard" value="${boardDao.selectBoard(param.id)}" />
 
 	<jsp:include page="/hf/header.jsp" />
+	<input type="hidden" name="c_id" value="${param.id}">
 	<div class="container" style="margin-bottom: 50px;">
-		<br>
+		<a href="write.jsp?id=${param.id}" class="btn btn-default">글 작성</a>
+		<p>
 		<table class="table table-hover">
 			<thead style="background-color: #f29494;">
 				<tr>
@@ -48,16 +38,16 @@
 				</tr>
 			</thead>
 			<c:choose>
-				<c:when test="${boardList.size() != 0}">
-					<c:forEach var="bList" items="${boardList}">
+				<c:when test="${sBoard.size() != 0}">
+					<c:forEach var="sList" items="${sBoard}">
 						<tbody>
 							<tr>
 								<td>&nbsp;</td>
-								<td>${bList.b_num}</td>
-								<td><a class="aDeco" href="content.jsp?b_num=${bList.b_num}">${bList.b_title}</a></td>
-								<td>${bList.b_nick}</td>
-								<td>${bList.b_date}</td>
-								<td>${bList.b_readNum}</td>
+								<td>${sList.b_num}</td>
+								<td><a class="aDeco" href="content.jsp?b_num=${sList.b_num}">${sList.b_title}</a></td>
+								<td>${sList.b_nick}</td>
+								<td>${sList.b_date}</td>
+								<td>${sList.b_readNum}</td>
 							</tr>
 						</tbody>
 					</c:forEach>

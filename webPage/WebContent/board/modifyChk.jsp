@@ -7,13 +7,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>writeChk.jsp</title>
+<title>${param.num}</title>
 </head>
 <body>
 	<jsp:useBean id="boardDao" class="board.BoardDAO" />
 	<jsp:useBean id="boardDto" class="board.BoardDTO" />
 	<jsp:setProperty property="*" name="boardDto"/>
-	<c:set var="result" value="${boardDao.write(boardDto)}" />
-	<c:redirect url="list.jsp" />
+	${boardDao.update(boardDto, param.num)}
+	<c:redirect url="content.jsp?b_num=${param.num}" />
 </body>
 </html>
